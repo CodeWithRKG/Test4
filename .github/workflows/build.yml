@@ -4,9 +4,14 @@ permissions:
   actions: write   # Allows triggering actions
 
 on:
-  push:
-    branches:
-      - build
+  workflow_call: # This allows this workflow to be called from another workflow
+    inputs:
+      model:
+        required: true
+        type: string
+      soc:
+        required: true
+        type: string
   
 jobs:
   build-kernel-oneplus-kernelsu-susfs:
