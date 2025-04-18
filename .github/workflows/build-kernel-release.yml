@@ -12,11 +12,38 @@ on:
         required: true
         type: boolean
         default: true
-        
-env:
+
+jobs:
+  build-batch: 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:          
+          - model: OP-NORD4
+            soc: pineapple
+            branch: oneplus/sm7675
+            manifest: oneplus_nord_4_v.xml
+            android_version: android14
+            kernel_version: "6.1"
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      model: ${{ matrix.model }}
+      soc: ${{ matrix.soc }}
+      branch: ${{ matrix.branch }}
+      manifest: ${{ matrix.manifest }}
+      android_version: ${{ matrix.android_version }}
+      kernel_version: ${{ matrix.kernel_version }}
+
+  trigger-release:
+    needs:
+      - build-batch      
+    runs-on: ubuntu-latest
+    if: ${{ inputs.make_release }}
+    env:
       TZ: Asia/Kolkata
       REPO_OWNER: CodeWithRKG
-      REPO_NAME: Test4
+      REPO_NAME: Test2
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RELEASE_NAME: "*Susfs Patched Kernels With KernelSU Next and BBR*"
       RELEASE_NOTES: |
