@@ -7,22 +7,22 @@ on:
   workflow_call: # This allows this workflow to be called from another workflow
     inputs:
       model:
-        required: true
+        required: false
         type: string
       soc:
-        required: true
+        required: false
         type: string
       branch:
-        required: true
+        required: false
         type: string
       manifest:
-        required: true
+        required: false
         type: string
       android_version:
-        required: true
+        required: false
         type: string
       kernel_version:
-        required: true
+        required: false
         type: string
   
 jobs:
