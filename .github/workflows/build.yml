@@ -4,27 +4,7 @@ permissions:
   actions: write   # Allows triggering actions
 
 on:
-  workflow_call: # This allows this workflow to be called from another workflow
-    inputs:
-      model:
-        required: false
-        type: string
-      soc:
-        required: false
-        type: string
-      branch:
-        required: false
-        type: string
-      manifest:
-        required: false
-        type: string
-      android_version:
-        required: false
-        type: string
-      kernel_version:
-        required: false
-        type: string
-  
+  workflow_call: # This allows this workflow to be called from another workflow  
 jobs:
   build-kernel-oneplus-kernelsu-susfs:
     runs-on: ubuntu-latest
