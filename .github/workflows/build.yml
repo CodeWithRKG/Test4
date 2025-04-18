@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-      - main
+      - build
   
 jobs:
   build-kernel-oneplus-kernelsu-susfs:
