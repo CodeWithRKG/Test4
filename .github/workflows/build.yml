@@ -1,4 +1,4 @@
-name: Build
+name: Susfs_Nord4_BBR_Mountify
 permissions: write-all
    
 env:
